@@ -1,0 +1,2 @@
+module Atomizer
+end
