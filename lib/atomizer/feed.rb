@@ -37,15 +37,19 @@ module Atomizer
       private
 
       def text(element, selector)
-        Text.new(element.css(selector).first.text, element.css(selector).first.attributes)
+        e = element.css(selector)
+        return Text.new(e.first.text, e.first.attributes) if e && e.size > 0
+        nil
       end
 
       def attribute_text(element, selector, attribute)
-        Text.new(element.css(selector).attr(attribute).text)
+        e = element.css(selector)
+        return Text.new(e.first.attr(attribute).to_s) if e && e.size > 0
+        nil
       end
 
       def parse_time(text)
-        Atomizer::Time.parse(text)
+        Atomizer::Time.parse(text) if text
       end
 
       def parse_content(content)

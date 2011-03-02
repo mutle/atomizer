@@ -8,4 +8,6 @@ namespace :test do
     t.libs << "test"
     t.pattern = 'test/unit/**/*_test.rb'
   end
+
+  task :default => :units
 end
